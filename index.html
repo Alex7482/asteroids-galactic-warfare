@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050817">
+  <title>Asteroids: Galactic Warfare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">GALACTIC DEFENSE INITIATIVE</p>
+        <h1>ASTEROIDS <span>GALACTIC WARFARE</span></h1>
+      </div>
+      <div class="status">SYSTEM ONLINE</div>
+    </header>
+
+    <section class="hud" aria-label="Game status">
+      <div class="stat"><span>SCORE</span><strong id="score">0</strong></div>
+      <div class="stat"><span>ROUND</span><strong id="round">1 / 500</strong></div>
+      <div class="stat"><span>LIVES</span><strong id="lives">20</strong></div>
+      <div class="stat"><span>GOLD</span><strong id="gold">0</strong></div>
+      <div class="stat"><span>WEAPON</span><strong id="weapon">BLASTER</strong></div>
+      <div class="stat"><span>HELPERS</span><strong id="helpers">0</strong></div>
+    </section>
+
+    <section class="arena">
+      <canvas id="gameCanvas" aria-label="Galactic Warfare game"></canvas>
+
+      <div class="boss-hud" id="bossHud" hidden>
+        <div class="boss-label"><span id="bossName">BOSS</span><span id="bossHealthText">100%</span></div>
+        <div class="health-track"><div id="bossHealth"></div></div>
+      </div>
+
+      <div class="overlay" id="overlay">
+        <div class="overlay-card">
+          <p class="eyebrow">YOUR MISSION BEGINS HERE</p>
+          <h2 id="overlayTitle">GALACTIC WARFARE</h2>
+          <p id="overlayText">Defend the galaxy. Collect gold. Defeat the bosses.</p>
+          <button id="startButton">START MISSION</button>
+          <p class="small">Move: WASD / Arrow Keys · Shoot: Space · Pause: P</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bottom-bar">
+      <span id="message">Destroy asteroids and collect gold.</span>
+      <button id="shopButton" class="secondary" disabled>SHOP — 0 GOLD</button>
+      <button id="pauseButton" class="secondary">PAUSE</button>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
