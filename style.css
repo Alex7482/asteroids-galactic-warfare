@@ -1,0 +1,251 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+  --cyan: #48eaff;
+  --purple: #9a72ff;
+  --panel: #0b1228;
+  --text: #eef6ff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px;
+  background:
+    radial-gradient(ellipse at 20% 15%, #18285a 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 90%, #301447 0%, transparent 35%),
+    #030611;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  border: 1px solid var(--cyan);
+  border-radius: 8px;
+  padding: 13px 22px;
+  color: #03101b;
+  background: var(--cyan);
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+button.secondary {
+  color: var(--cyan);
+  background: #101b35;
+}
+
+.game-shell {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 32px);
+  letter-spacing: 2px;
+}
+
+h1 span {
+  color: var(--cyan);
+}
+
+.status {
+  padding: 9px 12px;
+  border: 1px solid #236c72;
+  border-radius: 20px;
+  color: #80ffd2;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+.stat {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #1d2a49;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #101a32, #080d1b);
+}
+
+.stat span {
+  display: block;
+  margin-bottom: 7px;
+  color: #92a8c8;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.stat strong {
+  overflow-wrap: anywhere;
+  color: var(--cyan);
+  font-size: clamp(14px, 2vw, 22px);
+}
+
+.arena {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #285178;
+  border-radius: 12px;
+  background: #030611;
+  box-shadow: 0 0 35px #173e6c44;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: min(65vh, 650px);
+  min-height: 360px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #030611bb;
+  backdrop-filter: blur(5px);
+}
+
+.overlay[hidden],
+.boss-hud[hidden] {
+  display: none;
+}
+
+.overlay-card {
+  width: min(510px, 100%);
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #38658d;
+  border-radius: 14px;
+  background: #091329ed;
+  box-shadow: 0 0 45px #4beaff15;
+}
+
+.overlay-card h2 {
+  margin: 12px 0;
+  font-size: clamp(24px, 5vw, 40px);
+}
+
+.overlay-card > p:not(.eyebrow):not(.small) {
+  color: #afc0db;
+  line-height: 1.6;
+}
+
+.small {
+  margin: 20px 0 0;
+  color: #8194b3;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.boss-hud {
+  position: absolute;
+  top: 16px;
+  left: 12%;
+  width: 76%;
+  padding: 10px;
+  border: 1px solid #6c294d;
+  border-radius: 8px;
+  background: #100815dd;
+}
+
+.boss-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  color: #ffb0d4;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.health-track {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #35182a;
+}
+
+#bossHealth {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff315d, #ff8bba);
+  transition: width 0.15s;
+}
+
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 15px 0;
+}
+
+#message {
+  flex: 1;
+  min-width: 180px;
+  color: #a4b7d4;
+  font-size: 12px;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 10px;
+  }
+
+  .hud {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .status {
+    display: none;
+  }
+
+  #gameCanvas {
+    min-height: 420px;
+  }
+
+  .overlay-card {
+    padding: 20px 12px;
+  }
+}
